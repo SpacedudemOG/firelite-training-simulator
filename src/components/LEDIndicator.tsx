@@ -26,10 +26,10 @@ const LEDIndicator: React.FC<LEDIndicatorProps> = ({
   };
 
   const colorClass = {
-    alarm: 'bg-panel-alarm',
-    trouble: 'bg-panel-trouble',
-    supervisory: 'bg-panel-supervisory',
-    normal: 'bg-panel-normal'
+    alarm: 'bg-red-500',
+    trouble: 'bg-yellow-400',
+    supervisory: 'bg-yellow-300',
+    normal: 'bg-green-500'
   };
   
   const blinkingClass = blinking ? (
@@ -37,7 +37,7 @@ const LEDIndicator: React.FC<LEDIndicatorProps> = ({
   ) : '';
 
   return (
-    <div className={cn("flex items-center", className)}>
+    <div className={cn("flex items-center gap-2", className)}>
       <div
         className={cn(
           "rounded-full transition-all duration-300",
@@ -48,7 +48,7 @@ const LEDIndicator: React.FC<LEDIndicatorProps> = ({
         )}
       />
       {label && (
-        <span className="text-xs ml-1.5 font-medium text-gray-700">
+        <span className="text-xs font-medium text-gray-200 uppercase">
           {label}
         </span>
       )}

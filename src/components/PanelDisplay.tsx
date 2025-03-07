@@ -23,7 +23,7 @@ const PanelDisplay: React.FC<PanelDisplayProps> = ({
   return (
     <div 
       className={cn(
-        "bg-panel-display rounded-sm p-3 shadow-inner border-2 border-panel-border",
+        "bg-green-300/80 rounded-sm p-3 shadow-inner border-2 border-panel-border",
         "w-full h-36", // Fixed height to accommodate 4 lines
         className
       )}
@@ -32,7 +32,7 @@ const PanelDisplay: React.FC<PanelDisplayProps> = ({
         {fourLines.map((line, index) => (
           <div 
             key={index}
-            className="lcd-text text-lg leading-8 whitespace-pre font-mono"
+            className="lcd-text text-lg leading-8 whitespace-pre font-mono text-black"
           >
             {/* MS-9600UDLS has a 40-character display (per line) according to documentation */}
             {line.padEnd(40, ' ').substring(0, 40)}

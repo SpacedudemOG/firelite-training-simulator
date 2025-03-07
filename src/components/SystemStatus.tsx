@@ -21,55 +21,70 @@ const SystemStatus: React.FC<SystemStatusProps> = ({
   className
 }) => {
   return (
-    <div className={cn("grid grid-cols-1 gap-2", className)}>
-      <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg p-3 shadow-lg border border-panel-border">
-        <h3 className="text-white text-xs uppercase tracking-wider mb-2 font-semibold text-center">System Status</h3>
+    <div className={cn("grid grid-cols-2 gap-2", className)}>
+      {/* First column */}
+      <div className="space-y-2">
+        <LEDIndicator 
+          active={power} 
+          color="normal" 
+          label="AC POWER" 
+          size="lg"
+        />
         
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="text-white text-xs">Power</span>
-            <LEDIndicator 
-              active={power} 
-              color="normal" 
-              label={power ? "AC" : "DC"} 
-            />
-          </div>
-          
-          <div className="flex items-center justify-between">
-            <span className="text-white text-xs">Alarm</span>
-            <LEDIndicator 
-              active={alarm} 
-              color="alarm" 
-              blinking={alarm} 
-            />
-          </div>
-          
-          <div className="flex items-center justify-between">
-            <span className="text-white text-xs">Trouble</span>
-            <LEDIndicator 
-              active={trouble} 
-              color="trouble" 
-              blinking={trouble} 
-            />
-          </div>
-          
-          <div className="flex items-center justify-between">
-            <span className="text-white text-xs">Supervisory</span>
-            <LEDIndicator 
-              active={supervisory} 
-              color="supervisory" 
-              blinking={supervisory} 
-            />
-          </div>
-          
-          <div className="flex items-center justify-between">
-            <span className="text-white text-xs">Silenced</span>
-            <LEDIndicator 
-              active={silenced} 
-              color="normal" 
-            />
-          </div>
-        </div>
+        <LEDIndicator 
+          active={alarm} 
+          color="alarm" 
+          label="FIRE ALARM" 
+          blinking={alarm} 
+          size="lg"
+        />
+        
+        <LEDIndicator 
+          active={supervisory} 
+          color="supervisory" 
+          label="SUPERVISORY"
+          blinking={supervisory} 
+          size="lg"
+        />
+        
+        <LEDIndicator 
+          active={trouble} 
+          color="trouble" 
+          label="TROUBLE" 
+          blinking={trouble} 
+          size="lg"
+        />
+      </div>
+      
+      {/* Second column */}
+      <div className="space-y-2">
+        <LEDIndicator 
+          active={false} 
+          color="supervisory" 
+          label="MAINTENANCE" 
+          size="lg"
+        />
+        
+        <LEDIndicator 
+          active={silenced} 
+          color="normal" 
+          label="ALARM SILENCE" 
+          size="lg"
+        />
+        
+        <LEDIndicator 
+          active={false} 
+          color="normal" 
+          label="BATTERY" 
+          size="lg"
+        />
+        
+        <LEDIndicator 
+          active={false} 
+          color="normal" 
+          label="GROUND" 
+          size="lg"
+        />
       </div>
     </div>
   );

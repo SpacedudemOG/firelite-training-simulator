@@ -22,106 +22,123 @@ const KeyPad: React.FC<KeyPadProps> = ({
 }) => {
   return (
     <div className={cn("flex flex-col gap-4", className)}>
-      {/* Numeric keypad */}
+      {/* Numeric keypad layout following the image */}
       <div className="grid grid-cols-3 gap-2">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
           <button
             key={num}
-            className={cn(
-              "numeric-button", 
-              num === 0 ? "col-start-2" : ""
-            )}
+            className="bg-blue-900 text-white p-3 rounded shadow-lg border border-blue-950 hover:bg-blue-800 active:bg-blue-700"
             onClick={() => onNumberPress(num)}
           >
             {num}
           </button>
         ))}
+        
+        <button 
+          className="bg-blue-900 text-white p-3 rounded shadow-lg border border-blue-950 hover:bg-blue-800 active:bg-blue-700"
+          onClick={() => onNumberPress(0)}
+        >
+          0
+        </button>
+        
+        <button 
+          className="bg-blue-900 text-white p-3 rounded shadow-lg border border-blue-950 hover:bg-blue-800 active:bg-blue-700"
+          onClick={() => onEscPress()}
+        >
+          *
+        </button>
+        
+        <button 
+          className="bg-blue-900 text-white p-3 rounded shadow-lg border border-blue-950 hover:bg-blue-800 active:bg-blue-700"
+          onClick={() => onNumberPress(0)}
+        >
+          #
+        </button>
       </div>
       
-      {/* Navigation keys */}
+      {/* Navigation keys arranged as in the image with blue background */}
       <div className="grid grid-cols-3 gap-2">
+        {/* First row - empty, up, empty */}
+        <div></div>
         <button 
-          className="navigation-button col-start-2"
+          className="bg-blue-900 text-white p-3 rounded shadow-lg border border-blue-950 hover:bg-blue-800 active:bg-blue-700"
           onClick={() => onArrowPress('up')}
         >
           <ChevronUp size={18} className="mx-auto" />
         </button>
+        <div></div>
         
-        <div className="grid grid-cols-3 col-span-3 gap-2">
-          <button 
-            className="navigation-button"
-            onClick={() => onArrowPress('left')}
-          >
-            <ChevronLeft size={18} className="mx-auto" />
-          </button>
-          
-          <button 
-            className="navigation-button"
-            onClick={() => onEnterPress()}
-          >
-            Enter
-          </button>
-          
-          <button 
-            className="navigation-button"
-            onClick={() => onArrowPress('right')}
-          >
-            <ChevronRight size={18} className="mx-auto" />
-          </button>
-        </div>
+        {/* Second row - left, enter, right */}
+        <button 
+          className="bg-blue-900 text-white p-3 rounded shadow-lg border border-blue-950 hover:bg-blue-800 active:bg-blue-700"
+          onClick={() => onArrowPress('left')}
+        >
+          <ChevronLeft size={18} className="mx-auto" />
+        </button>
         
         <button 
-          className="navigation-button col-start-2"
+          className="bg-blue-900 text-white p-3 rounded shadow-lg border border-blue-950 hover:bg-blue-800 active:bg-blue-700"
+          onClick={() => onEnterPress()}
+        >
+          Enter
+        </button>
+        
+        <button 
+          className="bg-blue-900 text-white p-3 rounded shadow-lg border border-blue-950 hover:bg-blue-800 active:bg-blue-700"
+          onClick={() => onArrowPress('right')}
+        >
+          <ChevronRight size={18} className="mx-auto" />
+        </button>
+        
+        {/* Third row - empty, down, empty */}
+        <div></div>
+        <button 
+          className="bg-blue-900 text-white p-3 rounded shadow-lg border border-blue-950 hover:bg-blue-800 active:bg-blue-700"
           onClick={() => onArrowPress('down')}
         >
           <ChevronDown size={18} className="mx-auto" />
         </button>
+        <div></div>
       </div>
       
-      {/* Function keys */}
+      {/* Function keys with red background as shown in the image */}
       <div className="grid grid-cols-2 gap-2">
         <button 
-          className="function-button"
-          onClick={() => onEscPress()}
-        >
-          ESC
-        </button>
-        
-        <button 
-          className="function-button"
+          className="bg-red-600 text-white p-3 rounded shadow-lg border border-red-700 hover:bg-red-500 active:bg-red-400 font-semibold"
           onClick={() => onFunctionPress('acknowledge')}
         >
           ACK
         </button>
         
         <button 
-          className="function-button"
+          className="bg-red-600 text-white p-3 rounded shadow-lg border border-red-700 hover:bg-red-500 active:bg-red-400 font-semibold"
           onClick={() => onFunctionPress('silence')}
         >
           Silence
         </button>
         
         <button 
-          className="function-button"
-          onClick={() => onFunctionPress('reset')}
-        >
-          Reset
-        </button>
-        
-        <button 
-          className="function-button"
+          className="bg-red-600 text-white p-3 rounded shadow-lg border border-red-700 hover:bg-red-500 active:bg-red-400 font-semibold"
           onClick={() => onFunctionPress('drill')}
         >
           Drill
         </button>
         
         <button 
-          className="function-button"
-          onClick={() => onFunctionPress('menu')}
+          className="bg-red-600 text-white p-3 rounded shadow-lg border border-red-700 hover:bg-red-500 active:bg-red-400 font-semibold"
+          onClick={() => onFunctionPress('reset')}
         >
-          Menu
+          Reset
         </button>
       </div>
+
+      {/* Menu/Escape button */}
+      <button 
+        className="bg-yellow-500 text-black p-3 rounded shadow-lg border border-yellow-600 hover:bg-yellow-400 active:bg-yellow-300 font-semibold"
+        onClick={() => onFunctionPress('menu')}
+      >
+        Menu
+      </button>
     </div>
   );
 };
