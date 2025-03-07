@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import PanelDisplay from '@/components/PanelDisplay';
 import KeyPad from '@/components/KeyPad';
 import SystemStatus from '@/components/SystemStatus';
@@ -42,43 +42,58 @@ const Index = () => {
                 silenced={silenced}
               />
               
-              {/* Demo controls */}
-              <div className="bg-gray-800 rounded-lg p-3 border border-panel-border">
-                <h3 className="text-white text-xs uppercase tracking-wider mb-3 font-semibold text-center">
-                  Simulation Controls
-                </h3>
+              {/* Demo controls and panel info */}
+              <div className="space-y-4">
+                <div className="bg-gray-800 rounded-lg p-3 border border-panel-border">
+                  <h3 className="text-white text-xs uppercase tracking-wider mb-3 font-semibold text-center">
+                    Simulation Controls
+                  </h3>
+                  
+                  <div className="grid grid-cols-2 gap-2">
+                    <button 
+                      onClick={() => simulateCondition('alarm')}
+                      className="flex items-center justify-center px-3 py-2 bg-panel-alarm bg-opacity-90 text-white text-sm font-semibold rounded transition-all hover:bg-opacity-100"
+                    >
+                      <Flame size={14} className="mr-1" />
+                      Fire Alarm
+                    </button>
+                    
+                    <button 
+                      onClick={() => simulateCondition('trouble')}
+                      className="flex items-center justify-center px-3 py-2 bg-panel-trouble bg-opacity-90 text-white text-sm font-semibold rounded transition-all hover:bg-opacity-100"
+                    >
+                      <AlertTriangle size={14} className="mr-1" />
+                      Trouble
+                    </button>
+                    
+                    <button 
+                      onClick={() => simulateCondition('supervisory')}
+                      className="flex items-center justify-center px-3 py-2 bg-panel-supervisory bg-opacity-90 text-white text-sm font-semibold rounded transition-all hover:bg-opacity-100"
+                    >
+                      <Info size={14} className="mr-1" />
+                      Supervisory
+                    </button>
+                    
+                    <button 
+                      onClick={() => simulateCondition('normal')}
+                      className="flex items-center justify-center px-3 py-2 bg-panel-normal bg-opacity-90 text-white text-sm font-semibold rounded transition-all hover:bg-opacity-100"
+                    >
+                      Reset System
+                    </button>
+                  </div>
+                </div>
                 
-                <div className="grid grid-cols-2 gap-2">
-                  <button 
-                    onClick={() => simulateCondition('alarm')}
-                    className="flex items-center justify-center px-3 py-2 bg-panel-alarm bg-opacity-90 text-white text-sm font-semibold rounded transition-all hover:bg-opacity-100"
-                  >
-                    <Flame size={14} className="mr-1" />
-                    Fire Alarm
-                  </button>
-                  
-                  <button 
-                    onClick={() => simulateCondition('trouble')}
-                    className="flex items-center justify-center px-3 py-2 bg-panel-trouble bg-opacity-90 text-white text-sm font-semibold rounded transition-all hover:bg-opacity-100"
-                  >
-                    <AlertTriangle size={14} className="mr-1" />
-                    Trouble
-                  </button>
-                  
-                  <button 
-                    onClick={() => simulateCondition('supervisory')}
-                    className="flex items-center justify-center px-3 py-2 bg-panel-supervisory bg-opacity-90 text-white text-sm font-semibold rounded transition-all hover:bg-opacity-100"
-                  >
-                    <Info size={14} className="mr-1" />
-                    Supervisory
-                  </button>
-                  
-                  <button 
-                    onClick={() => simulateCondition('normal')}
-                    className="flex items-center justify-center px-3 py-2 bg-panel-normal bg-opacity-90 text-white text-sm font-semibold rounded transition-all hover:bg-opacity-100"
-                  >
-                    Reset System
-                  </button>
+                <div className="bg-gray-800 rounded-lg p-3 border border-panel-border">
+                  <h3 className="text-white text-xs uppercase tracking-wider mb-2 font-semibold text-center">
+                    Panel Information
+                  </h3>
+                  <div className="text-gray-300 text-xs space-y-1">
+                    <p><span className="text-white font-medium">Model:</span> MS-9600UDLS</p>
+                    <p><span className="text-white font-medium">Default Password:</span> 00000 or 1234</p>
+                    <p><span className="text-white font-medium">Zones:</span> 99 Software / 9 NAC</p>
+                    <p><span className="text-white font-medium">Points:</span> 318 per SLC loop</p>
+                    <p><span className="text-white font-medium">SLC Loops:</span> 1 Standard, 2 Optional</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -110,6 +125,7 @@ const Index = () => {
         
         <div className="mt-8 text-center text-sm text-gray-600">
           <p>This is a training simulator only. Not for use in actual fire alarm systems.</p>
+          <p className="mt-2">Based on the <a href="https://buildings.honeywell.com/content/dam/hbtbt/en/documents/document-lists/firelite/discontinued-products/51335.pdf" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Fire-lite MS-9600UDLS technical documentation</a>.</p>
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ const PanelDisplay: React.FC<PanelDisplayProps> = ({
     displayLines.push("");
   }
   
-  // Trim to 4 lines maximum
+  // Trim to 4 lines maximum (MS-9600UDLS has a 4-line display per documentation)
   const fourLines = displayLines.slice(0, 4);
   
   return (
@@ -28,13 +28,14 @@ const PanelDisplay: React.FC<PanelDisplayProps> = ({
         className
       )}
     >
-      <div className="w-full h-full flex flex-col justify-start">
+      <div className="w-full h-full flex flex-col justify-start overflow-hidden">
         {fourLines.map((line, index) => (
           <div 
             key={index}
-            className="lcd-text text-lg leading-8 whitespace-pre"
+            className="lcd-text text-lg leading-8 whitespace-pre font-mono"
           >
-            {line.padEnd(20, ' ')}
+            {/* MS-9600UDLS has a 40-character display (per line) according to documentation */}
+            {line.padEnd(40, ' ').substring(0, 40)}
           </div>
         ))}
       </div>
