@@ -4,7 +4,7 @@ import PanelDisplay from '@/components/PanelDisplay';
 import KeyPad from '@/components/KeyPad';
 import SystemStatus from '@/components/SystemStatus';
 import usePanelState from '@/hooks/usePanelState';
-import { AlertTriangle, Info, Fire } from 'lucide-react';
+import { AlertTriangle, Info, Flame } from 'lucide-react';
 
 const Index = () => {
   const { 
@@ -53,7 +53,7 @@ const Index = () => {
                     onClick={() => simulateCondition('alarm')}
                     className="flex items-center justify-center px-3 py-2 bg-panel-alarm bg-opacity-90 text-white text-sm font-semibold rounded transition-all hover:bg-opacity-100"
                   >
-                    <Fire size={14} className="mr-1" />
+                    <Flame size={14} className="mr-1" />
                     Fire Alarm
                   </button>
                   
